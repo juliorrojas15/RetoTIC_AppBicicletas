@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/sty_LayoutItem"
+        android:background="@color/beigeEmpresarial">
+        <ImageView
+            android:id="@+id/imagenItem"
+            style="@style/sty_ImagenItem"
+            android:src="@drawable/ic_menu_camera"/>
+        <TextView
+            android:id="@+id/textoItem"
+            style="@style/sty_TextoItem"
+            android:text="@string/texto"/>
+    </LinearLayout>
+</LinearLayout>

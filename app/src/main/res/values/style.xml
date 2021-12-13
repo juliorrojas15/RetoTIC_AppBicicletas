@@ -91,4 +91,34 @@
         <item name="android:textColor">@color/Negro</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <!--    SUCURSALES   -->
+    <style name="sty_LayoutItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/beigeEmpresarial</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="sty_ImagenItem">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="sty_TextoItem">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/Negro</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
