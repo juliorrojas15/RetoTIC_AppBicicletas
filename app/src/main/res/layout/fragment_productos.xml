@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.productos.ProductosFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/rojoEmpresarial">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- PRODUCTO 1 -->
+            <LinearLayout
+                style="@style/sty_LayoutProductos"
+                android:background="@color/beigeEmpresarial">
+                <ImageView
+                    android:id="@+id/productos_Imagen1"
+                    style="@style/sty_ImagenProductos"
+                    android:src="@drawable/producto_1"/>
+                <TextView
+                    android:id="@+id/productos_Texto1"
+                    style="@style/sty_TextoProductos"
+                    android:text="@string/producto1"/>
+            </LinearLayout>
+
+            <!-- PRODUCTO 2 -->
+            <LinearLayout
+                style="@style/sty_LayoutProductos"
+                android:background="@color/beigeEmpresarial">
+                <ImageView
+                    android:id="@+id/productos_Imagen2"
+                    style="@style/sty_ImagenProductos"
+                    android:src="@drawable/producto_2"/>
+                <TextView
+                    android:id="@+id/productos_Texto2"
+                    style="@style/sty_TextoProductos"
+                    android:text="@string/producto2"/>
+            </LinearLayout>
+
+            <!-- PRODUCTO 3 -->
+            <LinearLayout
+                style="@style/sty_LayoutProductos"
+                android:background="@color/beigeEmpresarial">
+                <ImageView
+                    android:id="@+id/productos_Imagen3"
+                    style="@style/sty_ImagenProductos"
+                    android:src="@drawable/producto_3"/>
+                <TextView
+                    android:id="@+id/productos_Texto3"
+                    style="@style/sty_TextoProductos"
+                    android:text="@string/producto3"/>
+            </LinearLayout>
+
+            <!-- PRODUCTO 4 -->
+            <LinearLayout
+                style="@style/sty_LayoutProductos"
+                android:background="@color/beigeEmpresarial">
+                <ImageView
+                    android:id="@+id/productos_Imagen4"
+                    style="@style/sty_ImagenProductos"
+                    android:src="@drawable/producto_4"/>
+                <TextView
+                    android:id="@+id/productos_Texto4"
+                    style="@style/sty_TextoProductos"
+                    android:text="@string/producto4"/>
+            </LinearLayout>
+
+            <!-- PRODUCTO 5 -->
+            <LinearLayout
+                style="@style/sty_LayoutProductos"
+                android:background="@color/beigeEmpresarial">
+                <ImageView
+                    android:id="@+id/productos_Imagen5"
+                    style="@style/sty_ImagenProductos"
+                    android:src="@drawable/producto_5"/>
+                <TextView
+                    android:id="@+id/productos_Texto5"
+                    style="@style/sty_TextoProductos"
+                    android:text="@string/producto5"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

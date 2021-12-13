@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itemFavoritos"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_favorite_24"/>
+
+    <item
+        android:id="@+id/itemCompartir"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_share_24"/>
+
+    <item
+        android:id="@+id/action_more"
+        android:orderInCategory="100"
+        android:title="@string/action_mas"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_more_vert_24">
+
+        <menu>
+            <item
+                android:id="@+id/menu_opcion1"
+                android:orderInCategory="100"
+                android:title="@string/menuOpción_1"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/menu_opcion2"
+                android:orderInCategory="100"
+                android:title="@string/menuOpción_2"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/menu_opcion3"
+                android:orderInCategory="100"
+                android:title="@string/menuOpción_3"
+                app:showAsAction="ifRoom"/>
+        </menu>
+
+
+    </item>
+</menu>
