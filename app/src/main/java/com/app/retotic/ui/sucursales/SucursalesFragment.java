@@ -52,7 +52,7 @@ public class SucursalesFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_more:
+            case R.id.menu_opcion1:
                 Intent intent = new Intent(getContext(), FormActivity.class);
                 intent.putExtra("nameExtra","Sucursales");
                 getActivity().startActivity(intent);

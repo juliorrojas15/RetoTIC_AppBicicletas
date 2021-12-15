@@ -8,7 +8,7 @@
     <string name="texto">Texto</string>
 
     <string name="action_mas">más</string>
-    <string name="menuOpción_1">Opción 1</string>
+    <string name="menuOpción_1">Agregar</string>
     <string name="menuOpción_2">Opción 2</string>
     <string name="menuOpción_3">Opción 3</string>
 
@@ -36,5 +36,16 @@
     <!-- Sucursales-->
     <string name="sucursal1">Norte</string>
     <string name="sucursal2">Centro</string>
+
+    <!-- Formulario -->
+    <string name="formCampo1">Campo 1</string>
+    <string name="formCampo2">Campo 2</string>
+    <string name="formCampo3">Campo 3</string>
+    <string name="formID">ID</string>
+    <string name="txtButtonBuscar">BUSCAR</string>
+    <string name="txtButtonInsertar">INSERTAR</string>
+    <string name="txtButtonConsultar">CONSULTAR</string>
+    <string name="txtButtonEliminar">ELIMINAR</string>
+    <string name="txtButtonActualizar">ACTUALIZAR</string>
 
 </resources>

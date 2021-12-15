@@ -121,4 +121,19 @@
         <item name="android:textColor">@color/Negro</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <!-- ##############################################################################  -->
+    <!-- FORMULARIO DE INGRESO DE DATOS -->
+    <style name="sty_editTextForm">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/Negro</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
 </resources>

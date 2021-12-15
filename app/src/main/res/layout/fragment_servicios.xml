@@ -17,43 +17,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- PRODUCTO 1 -->
-            <LinearLayout
-                style="@style/sty_LayoutServicios"
-                android:background="@color/beigeEmpresarial">
-                <ImageView
-                    android:id="@+id/servicios_Imagen1"
-                    style="@style/sty_ImagenServicios"
-                    android:src="@drawable/servicio_1"/>
-                <TextView
-                    android:id="@+id/servicios_Texto1"
-                    style="@style/sty_TextoServicios"
-                    android:text="@string/servicio1"/>
-            </LinearLayout>
-            <LinearLayout
-                style="@style/sty_LayoutServicios"
-                android:background="@color/beigeEmpresarial">
-                <ImageView
-                    android:id="@+id/servicios_Imagen2"
-                    style="@style/sty_ImagenServicios"
-                    android:src="@drawable/servicio_2"/>
-                <TextView
-                    android:id="@+id/servicios_Texto2"
-                    style="@style/sty_TextoServicios"
-                    android:text="@string/servicio2"/>
-            </LinearLayout>
-            <LinearLayout
-                style="@style/sty_LayoutServicios"
-                android:background="@color/beigeEmpresarial">
-                <ImageView
-                    android:id="@+id/servicios_Imagen3"
-                    style="@style/sty_ImagenServicios"
-                    android:src="@drawable/servicio_3"/>
-                <TextView
-                    android:id="@+id/servicios_Texto3"
-                    style="@style/sty_TextoServicios"
-                    android:text="@string/servicio3"/>
-            </LinearLayout>
+            <GridView
+                android:id="@+id/gridServicios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="1">
+            </GridView>
         </LinearLayout>
     </ScrollView>
 

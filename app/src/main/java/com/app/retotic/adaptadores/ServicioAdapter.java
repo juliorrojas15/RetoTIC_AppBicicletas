@@ -54,17 +54,14 @@ public class ServicioAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.textoItem);
 
         Servicio servicio = servicios.get(position);
-
-
         byte[] image = servicio.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
-        imageView.setImageBitmap(bitmap);
-
 
         String sTexto = servicio.getId() + ")" + servicio.getName()
                 + "\n" + servicio.getDescription()
                 + "\n" + servicio.getPrice();
         textView.setText(sTexto);
+        imageView.setImageBitmap(bitmap);
 
 
         return convertView;

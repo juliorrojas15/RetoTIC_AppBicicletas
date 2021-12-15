@@ -1,5 +1,6 @@
 package com.app.retotic.datos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +14,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase sqLiteDatabase;
 
     public DBHelper(Context context) {
+
         super(context, "Reto3.db",null, 1);
+        sqLiteDatabase = this.getWritableDatabase();
     }
 
     @Override
@@ -49,6 +52,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //METODOS PROPIOS
+    public void deleteTable(){
+        String sql = "DROP TABLE IF EXISTS PRODUCTOS";
+        SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
+        statement.execute();
+    }
+
     public void insertData(String campo1, String campo2, String campo3,byte[] image,String table){
         String sql = "INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?)";
         SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
@@ -66,5 +75,23 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getData(String table){
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+ table,null);
         return cursor;
+    }
+
+    public Cursor getDataById(String table, String id){
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+table+" WHERE id = "+id, null);
+        return cursor;
+    }
+
+    public void deleteDataById(String table, String id){
+        sqLiteDatabase.execSQL("DELETE FROM "+table+" WHERE id = "+id);
+    }
+
+    public void updateProductoById(String table,String id,String campo1, String campo2, String campo3, byte[] image){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", campo1);
+        contentValues.put("description", campo2);
+        contentValues.put("price", campo3);
+        contentValues.put("image", image);
+        sqLiteDatabase.update(table,contentValues,"id = ?",new String[]{id});
     }
 }

@@ -54,18 +54,16 @@ public class ProductoAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.textoItem);
 
         Producto producto = productos.get(position);
-
-
         byte[] image = producto.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
-        imageView.setImageBitmap(bitmap);
+
 
 
         String sTexto = producto.getId() + ")" + producto.getName()
                         + "\n" + producto.getDescription()
                         + "\n" + producto.getPrice();
         textView.setText(sTexto);
-
+        imageView.setImageBitmap(bitmap);
 
         return convertView;
     }

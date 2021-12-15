@@ -5,15 +5,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FormActivity">
+    android:layout_gravity="center_horizontal"
+    tools:context=".FormActivity"
+    android:id="@+id/layoutForm">
 
     <TextView
         android:id="@+id/tvTexto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:textAlignment="center"
         android:text="@string/texto"
         android:textSize="40sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/imgForm"
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            android:layout_margin="20dp"/>
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:text="@string/txtButtonBuscar"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etCampo1"
+        style="@style/sty_editTextForm"
+        android:hint="@string/formCampo1"/>
+    <EditText
+        android:id="@+id/etCampo2"
+        style="@style/sty_editTextForm"
+        android:hint="@string/formCampo2"/>
+    <EditText
+        android:id="@+id/etCampo3"
+        style="@style/sty_editTextForm"
+        android:hint="@string/formCampo3"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/btnInsertar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:text="@string/txtButtonInsertar"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnConsultar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:textSize="10sp"
+            android:text="@string/txtButtonConsultar"/>
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:textSize="10sp"
+            android:text="@string/txtButtonEliminar"/>
+
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:textSize="9sp"
+            android:text="@string/txtButtonActualizar"/>
+
+        <EditText
+            android:id="@+id/etID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_margin="10dp"
+            android:hint="@string/formID"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
 
 </LinearLayout>
