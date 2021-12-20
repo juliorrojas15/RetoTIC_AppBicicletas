@@ -7,24 +7,13 @@
     android:padding="20dp"
     tools:context=".ui.sucursales.SucursalesFragment">
 
-    <ScrollView
+    <GridView
+        android:id="@+id/gridSucursales"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/rojoEmpresarial">
+        android:numColumns="1">
+    </GridView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <GridView
-                android:id="@+id/gridSucursales"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:numColumns="1">
-            </GridView>
-        </LinearLayout>
-    </ScrollView>
 
 
 </LinearLayout>

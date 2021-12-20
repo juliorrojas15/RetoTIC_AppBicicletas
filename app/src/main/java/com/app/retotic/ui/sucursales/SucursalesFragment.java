@@ -1,7 +1,6 @@
 package com.app.retotic.ui.sucursales;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,9 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.app.retotic.R;
-import com.app.retotic.adaptadores.SucursalAdapter;
 import com.app.retotic.casos_uso.CasoUsoSucursal;
-import com.app.retotic.datos.DBHelper;
-import com.app.retotic.MapsActivity;
+import com.app.retotic.datos.ApiOracle;
+import com.app.retotic.FormMapsActivity;
 import com.app.retotic.modelos.Sucursal;
 
 import java.util.ArrayList;
@@ -30,7 +28,8 @@ import java.util.ArrayList;
 public class SucursalesFragment extends Fragment {
 
     private GridView oGridView;
-    private DBHelper dbHelper;
+    //private DBHelper dbHelper;
+    private ApiOracle apiOracle;
     private ArrayList<Sucursal> sucursal;
     private String TABLE_NAME = "SUCURSALES";
     private CasoUsoSucursal casoUsoSucursal;
@@ -41,14 +40,19 @@ public class SucursalesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_sucursales,container,false);
         try {
             casoUsoSucursal = new CasoUsoSucursal();
-            dbHelper = new DBHelper(getContext());
-
-
-            Cursor cursor = dbHelper.getData(TABLE_NAME);
-            sucursal = casoUsoSucursal.llenarListaSucursal(cursor);
             oGridView = (GridView) root.findViewById(R.id.gridSucursales);
-            SucursalAdapter sucursalAdapter = new SucursalAdapter(root.getContext(),sucursal);
-            oGridView.setAdapter(sucursalAdapter);
+
+            // ****************** SQL ORACLE ******************
+            apiOracle = new ApiOracle(root.getContext());
+            apiOracle.getAllSucursales(oGridView);
+
+
+            // ****************** SQLite ******************
+            //dbHelper = new DBHelper(getContext());
+            //Cursor cursor = dbHelper.getData(TABLE_NAME);
+            //sucursal = casoUsoSucursal.llenarListaSucursal(cursor);
+            //SucursalAdapter sucursalAdapter = new SucursalAdapter(root.getContext(),sucursal);
+            //oGridView.setAdapter(sucursalAdapter);
 
         }
         catch (Exception e){
@@ -78,7 +82,7 @@ public class SucursalesFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_opcion1:
-                Intent intent = new Intent(getContext(), MapsActivity.class);
+                Intent intent = new Intent(getContext(), FormMapsActivity.class);
                 intent.putExtra("nameExtra","Sucursales");
                 getActivity().startActivity(intent);
                 //Toast.makeText(getContext(),"Hola Sucursales",Toast.LENGTH_SHORT).show();

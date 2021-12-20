@@ -2,17 +2,18 @@ package com.app.retotic;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -23,8 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.retotic.R;
-import com.app.retotic.databinding.ActivityMapsBinding;
+import com.app.retotic.databinding.ActivityFormMapsBinding;
+import com.app.retotic.datos.ApiOracle;
 import com.app.retotic.datos.DBHelper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,10 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class FormMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ActivityMapsBinding binding;
+    private ActivityFormMapsBinding binding;
     private final int REQUEST_CODE_GALLERY = 999;
     private LinearLayout olayoutForm;
     private TextView otvTexto;
@@ -50,6 +51,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ImageView oimgForm;
 
     private DBHelper dbHelper;
+    private ApiOracle apiOracle;
+
     String sCampo1Insert, sCampo2Insert, sCampo3Insert;
     byte[] imgInsert;
     String nameExtra = "";
@@ -58,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
+        binding = ActivityFormMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -79,7 +82,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         obtnEliminar = (Button) findViewById(R.id.btnEliminar);
         obtnActualizar = (Button) findViewById(R.id.btnActualizar);
         oimgForm = (ImageView) findViewById(R.id.imgForm);
+
         dbHelper = new DBHelper(getApplicationContext());
+        apiOracle = new ApiOracle(getApplicationContext());
 
 
         Intent intent = getIntent();
@@ -98,18 +103,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 ActivityCompat.requestPermissions(
-                        MapsActivity.this,
+                        FormMapsActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY
                 );
             }
         });
         obtnInsertar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 try {
                     llenarCampos();
-                    dbHelper.insertData(sCampo1Insert,sCampo2Insert,sCampo3Insert,imgInsert,nameExtra);
+                    //dbHelper.insertData(sCampo1Insert,sCampo2Insert,sCampo3Insert,imgInsert,nameExtra);
+                    apiOracle.insertSucursal(sCampo1Insert,sCampo2Insert,sCampo3Insert,oimgForm);
+
                     Toast.makeText(getApplicationContext(),"Insert Success",Toast.LENGTH_SHORT).show();
                     limpiarCampos();
                 }catch (Exception e){
@@ -122,6 +130,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 try {
+                    apiOracle.getSucursalById(oetID.getText().toString(),oetCampo1,oetCampo2,oetCampo3,oimgForm,mMap);
+                    /*   *********** SQLite **************
                     Cursor cursor = dbHelper.getDataById(nameExtra,oetID.getText().toString());
                     while(cursor.moveToNext()){
                         oetCampo1.setText(cursor.getString(1));
@@ -131,7 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         Bitmap bitmap = BitmapFactory.decodeByteArray(imgConsultada,0,imgConsultada.length);
                         oimgForm.setImageBitmap(bitmap);
 
-                    }
+                    }*/
                 }
                 catch (Exception e){
                     Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
@@ -143,7 +153,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 try{
+                    /*   *********** SQLite **************
                     dbHelper.deleteDataById(nameExtra,oetID.getText().toString().trim());
+                     */
+                    apiOracle.deleteSucursal(oetID.getText().toString());
+
                     limpiarCampos();
                     Snackbar.make(view,"Eliminado",Snackbar.LENGTH_LONG).show();
                 }
@@ -155,16 +169,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
         obtnActualizar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 try {
                     llenarCampos();
+
+                    apiOracle.updateSucursal(oetID.getText().toString(), sCampo1Insert,sCampo2Insert,sCampo3Insert,oimgForm);
+                    /*   *********** SQLite **************
                     dbHelper.updateProductoById(nameExtra,
                             oetID.getText().toString().trim(),
                             sCampo1Insert,
                             sCampo2Insert,
                             sCampo3Insert,
                             imgInsert);
+
+                     */
                     limpiarCampos();
                     Toast.makeText(getApplicationContext(),"Item editado",Toast.LENGTH_SHORT).show();
                 }
