@@ -7,23 +7,14 @@
     android:orientation="vertical"
     tools:context=".ui.servicios.ServiciosFragment">
 
-    <ScrollView
+
+
+    <GridView
+        android:id="@+id/gridServicios"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/rojoEmpresarial">
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:numColumns="1">
+    </GridView>
 
-            <GridView
-                android:id="@+id/gridServicios"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:numColumns="1">
-            </GridView>
-        </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>
