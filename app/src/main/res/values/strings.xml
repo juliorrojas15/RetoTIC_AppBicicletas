@@ -47,5 +47,7 @@
     <string name="txtButtonConsultar">CONSULTAR</string>
     <string name="txtButtonEliminar">ELIMINAR</string>
     <string name="txtButtonActualizar">ACTUALIZAR</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_show_maps">ShowMapsActivity</string>
 
 </resources>

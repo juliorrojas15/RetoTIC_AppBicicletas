@@ -16,11 +16,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.retotic.databinding.ActivityMainBinding;
 
+/**
+ * @author Julio Rojas
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     *
+     */
     private AppBarConfiguration mAppBarConfiguration;
+    /**
+     *
+     */
     private ActivityMainBinding binding;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

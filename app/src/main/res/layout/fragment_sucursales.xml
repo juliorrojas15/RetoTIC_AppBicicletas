@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".ui.sucursales.SucursalesFragment">
 
     <ScrollView
@@ -16,31 +17,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- PRODUCTO 1 -->
-            <LinearLayout
-                style="@style/sty_LayoutSucursales"
-                android:background="@color/beigeEmpresarial">
-                <ImageView
-                    android:id="@+id/sucursales_Imagen1"
-                    style="@style/sty_ImagenSucursales"
-                    android:src="@drawable/sucursal_1"/>
-                <TextView
-                    android:id="@+id/sucursales_Texto1"
-                    style="@style/sty_TextoSucursales"
-                    android:text="@string/sucursal1"/>
-            </LinearLayout>
-            <LinearLayout
-                style="@style/sty_LayoutSucursales"
-                android:background="@color/beigeEmpresarial">
-                <ImageView
-                    android:id="@+id/sucursales_Imagen2"
-                    style="@style/sty_ImagenSucursales"
-                    android:src="@drawable/sucursal_2"/>
-                <TextView
-                    android:id="@+id/sucursales_Texto2"
-                    style="@style/sty_TextoSucursales"
-                    android:text="@string/sucursal2"/>
-            </LinearLayout>
+            <GridView
+                android:id="@+id/gridSucursales"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="1">
+            </GridView>
         </LinearLayout>
     </ScrollView>
 

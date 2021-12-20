@@ -1,6 +1,7 @@
 package com.app.retotic.ui.sucursales;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,29 +14,53 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.Toast;
 
-import com.app.retotic.FormActivity;
 import com.app.retotic.R;
-import com.app.retotic.databinding.FragmentSucursalesBinding;
+import com.app.retotic.adaptadores.SucursalAdapter;
+import com.app.retotic.casos_uso.CasoUsoSucursal;
+import com.app.retotic.datos.DBHelper;
+import com.app.retotic.MapsActivity;
+import com.app.retotic.modelos.Sucursal;
+
+import java.util.ArrayList;
 
 
 public class SucursalesFragment extends Fragment {
 
-    private FragmentSucursalesBinding binding;
+    private GridView oGridView;
+    private DBHelper dbHelper;
+    private ArrayList<Sucursal> sucursal;
+    private String TABLE_NAME = "SUCURSALES";
+    private CasoUsoSucursal casoUsoSucursal;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentSucursalesBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View root = inflater.inflate(R.layout.fragment_sucursales,container,false);
+        try {
+            casoUsoSucursal = new CasoUsoSucursal();
+            dbHelper = new DBHelper(getContext());
 
+
+            Cursor cursor = dbHelper.getData(TABLE_NAME);
+            sucursal = casoUsoSucursal.llenarListaSucursal(cursor);
+            oGridView = (GridView) root.findViewById(R.id.gridSucursales);
+            SucursalAdapter sucursalAdapter = new SucursalAdapter(root.getContext(),sucursal);
+            oGridView.setAdapter(sucursalAdapter);
+
+        }
+        catch (Exception e){
+            Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
+        }
         return root;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+
     }
 
     @Override
@@ -53,13 +78,14 @@ public class SucursalesFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_opcion1:
-                Intent intent = new Intent(getContext(), FormActivity.class);
+                Intent intent = new Intent(getContext(), MapsActivity.class);
                 intent.putExtra("nameExtra","Sucursales");
                 getActivity().startActivity(intent);
                 //Toast.makeText(getContext(),"Hola Sucursales",Toast.LENGTH_SHORT).show();
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
+
     }
 }
 

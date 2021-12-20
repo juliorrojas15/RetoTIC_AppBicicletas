@@ -1,5 +1,7 @@
 package com.app.retotic.modelos;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Sucursal {
     private int id;
     private String name;
@@ -15,6 +17,10 @@ public class Sucursal {
         this.image = image;
     }
 
+    public Sucursal(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
     public Sucursal() {
     }
 
@@ -56,5 +62,14 @@ public class Sucursal {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public LatLng locationToCoord(){
+
+        String[] coord = this.address.split(",");
+        Double latitud = Double.parseDouble(coord[0]);
+        Double longitud = Double.parseDouble(coord[0]);
+        LatLng latLng = new LatLng(latitud,longitud);
+        return latLng;
     }
 }

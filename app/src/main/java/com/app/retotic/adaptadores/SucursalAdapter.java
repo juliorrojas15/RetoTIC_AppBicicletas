@@ -1,6 +1,7 @@
 package com.app.retotic.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.retotic.R;
+import com.app.retotic.ShowMapsActivity;
 import com.app.retotic.modelos.Sucursal;
 
 import java.util.ArrayList;
@@ -64,6 +66,16 @@ public class SucursalAdapter extends BaseAdapter {
                 + "\n" + sucursal.getDescription()
                 + "\n" + sucursal.getAddress();
         textView.setText(sTexto);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ShowMapsActivity.class);
+                intent.putExtra("name",sucursal.getName());
+                intent.putExtra("location",sucursal.getAddress());
+                context.startActivity(intent);
+            }
+        });
 
 
         return convertView;
