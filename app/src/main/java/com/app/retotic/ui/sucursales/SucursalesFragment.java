@@ -84,6 +84,7 @@ public class SucursalesFragment extends Fragment {
                 //Toast.makeText(getContext(),"Hola Sucursales",Toast.LENGTH_SHORT).show();
                 return true;
             default: return super.onOptionsItemSelected(item);
+            //comentario
         }
 
     }
